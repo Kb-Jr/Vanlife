@@ -29,8 +29,10 @@ const VansDetails = () => {
             </div>
             <h1 className='font-bold text-3xl'>{van.name}</h1>
             <p className='font-semibold text-2xl'>${van.price}/day</p>
-            <p className='w-3/5 m-5 font-semibold text-justify'>{van.description}</p>
             <button className='text-gray-50 p-2 w-1/4 rounded-lg hover:drop-shadow-lg' style={{backgroundColor: `${van.color}`}}>{van.type}</button>
+            <p className='w-3/5 m-5 font-semibold text-justify'>{van.description}</p>
+            <button className='text-gray-50 p-2 w-3/5 rounded-lg hover:drop-shadow-lg' style={{backgroundColor: "#FF6969"}}>Rent This Van</button>
+
         </div>
         
     </div>
