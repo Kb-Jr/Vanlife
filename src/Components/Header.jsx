@@ -7,6 +7,8 @@ const Header = () => {
     <div className='flex w-full justify-around m-4 font-semibold text-2xl'>
         <Link to='/'>#VANLIFE</Link>
         <Link to='/about'>About</Link>
+        <Link to='/vanslist'>Vans List</Link>
+
     </div>
   )
 }
