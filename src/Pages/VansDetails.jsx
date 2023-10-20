@@ -22,7 +22,7 @@ const VansDetails = () => {
     <div className='m-5 p-5 flex flex-col justify-center items-center rounded-2xl drop-shadow-md text-gray-800 bg-main-bg'>
 
     <div className='flex flex-wrap justify-center items-center gap-10 w-4/5 md:w-3/4'>
-        <Header />
+        
         <div className='flex flex-col items-center justify-around cursor-pointer hover:drop-shadow-md'>
             <div className="image-card">
                 <img src={van.imageUrl} alt=""  className='image'/>

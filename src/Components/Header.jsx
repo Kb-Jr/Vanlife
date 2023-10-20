@@ -6,6 +6,7 @@ const Header = () => {
   return (
     <div className='flex w-full justify-around m-4 font-semibold text-2xl'>
         <Link to='/'>#VANLIFE</Link>
+        <Link to='/hosts'>Hosts</Link>
         <Link to='/about'>About</Link>
         <Link to='/vans'>Vans List</Link>
 

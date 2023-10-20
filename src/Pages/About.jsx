@@ -4,7 +4,7 @@ import Header from '../Components/Header';
 const About = () => {
   return (
     <div className='m-5 p-5 flex flex-col justify-center items-center rounded-2xl drop-shadow-md text-gray-800 bg-main-bg'>
-          <Header />
+          
           <div className='gap-3 flex-col justify-around items-center'>
               <div className='m-20 font-bold text-5xl'>
                 <p>About VanLife!!</p>
