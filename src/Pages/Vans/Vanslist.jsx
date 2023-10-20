@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from '../Components/Header'
-import '../server'
+import Header from '../../Components/Header'
+import '../../server'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
