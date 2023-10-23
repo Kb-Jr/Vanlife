@@ -9,6 +9,7 @@ import Income from './Pages/Host/Income'
 import Reviews from './Pages/Host/Reviews'
 import Dashboard from './Pages/Host/Dashboard'
 import Layout from './Components/Layout'
+import Hosts from './Pages/Host/Hosts'
 import './server'
 
 function App() {
@@ -17,13 +18,14 @@ function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />}/>
-        <Route path="/about" element={<About />}/>
-        <Route path="/vans" element={<Vanslist />}/>
-        <Route path="/vans/:id" element={<VansDetails />}/>
+        <Route path="about" element={<About />}/>
+        <Route path="vans" element={<Vanslist />}/>
+        <Route path="vans/:id" element={<VansDetails />}/>
 
-        <Route path='hosts' element={<Dashboard />}>
-          <Route path="/hosts/income" element={<Income />}/>
-          <Route path="/hosts/reviews" element={<Reviews />}/>
+        <Route path='hosts' element={<Hosts />}>
+          <Route path='hosts' element={< Dashboard/>} />
+          <Route path="income" element={<Income />}/>
+          <Route path="reviews" element={<Reviews />}/>
         </Route>
       </Route>
     </Routes>
