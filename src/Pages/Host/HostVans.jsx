@@ -1,5 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../../server'
 
 const HostVans = () => {
     const [hostVan, sethostVan] = useState([])
@@ -12,14 +14,17 @@ useEffect(() => {
     
   
 }, [])
-    
+
+console.log(hostVan)
 
 return (
     <main>
         <h1 className='font-bold-500 text-2xl'>Your Listed Vans</h1> 
         <div>
-            {hostVan.map((item, i) => 
-            <div key={i} className='flex gap-2 rounded-xl drop-shadow-sm w-4/5'>
+            {hostVan.map((item, i) =>      
+            (
+            <Link to={`/hosts/hvans/${item.id}`}>
+            <div key={i} className='flex gap-2 rounded-xl drop-shadow-sm w-4/5 cursor-pointer'>
                 <div className='sm-image-card'>
                     <img src={item.imageUrl} alt="" />
                 </div>
@@ -28,6 +33,8 @@ return (
                     <p>${item.price}/day</p>
                 </div>
             </div>
+            </Link>
+            )
             )}
         </div>
     </main>  
