@@ -3,10 +3,11 @@ import { NavLink } from 'react-router-dom'
 
 
 const Header = () => {
+  
   const activeLink = 'text-red-500 font-bold underline'
   return (
     <div className='flex w-full justify-around m-4 font-semibold text-2xl'>
-        <NavLink to='/' className={({isActive}) => isActive ? activeLink : "" }     
+        <NavLink to='/'    
         >#VANLIFE
         </NavLink>
         <NavLink to='/hosts' className={({isActive}) => isActive ? activeLink : "" } >
