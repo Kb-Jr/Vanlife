@@ -1,6 +1,7 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, NavLink, Outlet } from 'react-router-dom'
 import { useEffect, useState } from 'react';
+
 
 const HostVansDetail = () => {
 
@@ -13,6 +14,12 @@ const HostVansDetail = () => {
           .then(data => setVan(data.vans)) 
           
       }, [params.id])
+
+      const activeLink = {
+        color: '#f05a28',
+        textDecoration: 'underline',
+        fontWeight: 'bold'
+      }
 
   return (
     <main>
@@ -31,17 +38,15 @@ const HostVansDetail = () => {
 
                 
             </div>
-                <div className='flex items-center justify-between'>
-                        <p>Details</p>
-                        <p>Pricing</p>
-                        <p>Photos</p>
-                </div>
-                <div className='flex flex-col justify-around font-semibold'>
-                    <p>Name: {item.name}</p>
-                    <p>Category: {item.type}</p>
-                    <p className='flex flex-wrap'>Description: {item.description}</p>
-                    <p>Validity: Public</p>
-                </div>
+                
+            <div className='flex gap-5 font-bold text-2xl'>
+                <NavLink to={`/hosts/hvans/${item.id}`} end style={({isActive}) => isActive? activeLink : null}>Details</NavLink>
+                <NavLink to='photos' style={({isActive}) => isActive? activeLink : null}>Photos</NavLink>
+                <NavLink to='pricing' style={({isActive}) => isActive? activeLink : null}>Pricing</NavLink>
+
+            </div>
+
+                <Outlet />
             </div>
             )
             )}
