@@ -25,8 +25,8 @@ const HostVansDetail = () => {
     <main>
         <div>
             {van.map((item, i) => (
-            <div>
-            <div key={i} className='flex gap-2 rounded-xl drop-shadow-sm w-4/5'>
+            <div key={i}>
+            <div  className='flex gap-2 rounded-xl drop-shadow-sm w-4/5'>
                 <div className='sm-image-card'>
                     <img src={item.imageUrl} alt="" />
                 </div>

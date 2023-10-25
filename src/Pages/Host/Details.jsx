@@ -18,7 +18,7 @@ const Details = () => {
      <main>
         <div>
             {van.map((item, i) => (
-            <div>
+            <div key={i}>
 
                 <div className='flex flex-col justify-around font-semibold'>
                     <p>Name: {item.name}</p>

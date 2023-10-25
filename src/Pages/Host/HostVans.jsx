@@ -23,8 +23,8 @@ return (
         <div>
             {hostVan.map((item, i) =>      
             (
-            <Link to={`/hosts/hvans/${item.id}`}>
-            <div key={i} className='flex gap-2 rounded-xl drop-shadow-sm w-4/5 cursor-pointer'>
+            <Link to={`/hosts/hvans/${item.id}`} key={i}>
+            <div  className='flex gap-2 rounded-xl drop-shadow-sm w-4/5 cursor-pointer'>
                 <div className='sm-image-card'>
                     <img src={item.imageUrl} alt="" />
                 </div>
