@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams, NavLink, Outlet, useOutletContext } from 'react-router-dom'
+import { useParams, NavLink, Outlet} from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import {BiArrowBack} from 'react-icons/bi'
 
@@ -54,7 +54,7 @@ const HostVansDetail = () => {
 
             </div>
 
-                <Outlet context={[van, setVan]} />
+                <Outlet context={[van]} />
             </div>
             )
             )}
