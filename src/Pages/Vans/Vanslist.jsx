@@ -9,8 +9,8 @@ const Vanslist = () => {
 
     const [searchParams, setSetParams] = useSearchParams();
     const typeFilter = searchParams.get("type");
-    console.log(typeFilter);
-
+    
+    
     const [vans, setVans] = useState([]);
     useEffect(() => {
         fetch("/api/vans")
@@ -20,6 +20,8 @@ const Vanslist = () => {
       }, [])
 
 
+      const displayedVans = typeFilter ? vans.filter(van => van.type.toLowerCase() === typeFilter)  : vans;
+
   return (
     <div className='m-5 p-5 flex flex-col justify-center items-center rounded-2xl drop-shadow-md text-gray-800 bg-main-bg'>
           
@@ -27,7 +29,7 @@ const Vanslist = () => {
               <h1>All Vans</h1>        
           </div>
         <div className='flex flex-wrap justify-center items-center gap-10 w-4/5 md:w-3/4'>
-            {vans.map((van, i) => (
+            {displayedVans.map((van, i) => (
                 <Link to={`/vans/${van.id}`} key={i}>
                     <div className='flex flex-col items-center justify-around cursor-pointer hover:drop-shadow-md'>
                         <div className="image-card">
