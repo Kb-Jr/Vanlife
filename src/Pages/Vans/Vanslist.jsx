@@ -2,9 +2,15 @@ import React from 'react'
 import Header from '../../Components/Header'
 import '../../server'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
+
 
 const Vanslist = () => {
+
+    const [searchParams, setSetParams] = useSearchParams();
+    const typeFilter = searchParams.get("type");
+    console.log(typeFilter);
+
     const [vans, setVans] = useState([]);
     useEffect(() => {
         fetch("/api/vans")
