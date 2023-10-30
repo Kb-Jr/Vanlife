@@ -1,6 +1,8 @@
 import React from 'react'
-import { useParams, NavLink, Outlet } from 'react-router-dom'
+import { useParams, NavLink, Outlet, useOutletContext } from 'react-router-dom'
 import { useEffect, useState } from 'react';
+import {BiArrowBack} from 'react-icons/bi'
+
 
 
 const HostVansDetail = () => {
@@ -23,6 +25,11 @@ const HostVansDetail = () => {
 
   return (
     <main>
+        <NavLink to='hvans'>
+            <div className='flex w-3/4 font-extrabold cursor-pointer hover:drop-shadow-lg'>
+                <span><BiArrowBack />Back to all vans</span>
+            </div>
+        </NavLink>
         <div>
             {van.map((item, i) => (
             <div key={i}>
@@ -40,13 +47,14 @@ const HostVansDetail = () => {
             </div>
                 
             <div className='flex gap-5 font-bold text-2xl'>
-                <NavLink to={`/hosts/hvans/${item.id}`} end style={({isActive}) => isActive? activeLink : null}>Details</NavLink>
+                {/* <NavLink to={`/hosts/hvans/${item.id}`} end style={({isActive}) => isActive? activeLink : null}>Details</NavLink> */}
+                <NavLink to='.' end style={({isActive}) => isActive? activeLink : null}>Details</NavLink>
                 <NavLink to='photos' style={({isActive}) => isActive? activeLink : null}>Photos</NavLink>
                 <NavLink to='pricing' style={({isActive}) => isActive? activeLink : null}>Pricing</NavLink>
 
             </div>
 
-                <Outlet />
+                <Outlet context={[van, setVan]} />
             </div>
             )
             )}

@@ -1,19 +1,10 @@
 import React from 'react'
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 
 const Details = () => {
-    const params = useParams();
-    const [van, setVan] = useState([])
+   
 
-    useEffect(() => {
-        fetch(`/api/host/vans/${params.id}`)
-          .then(res => res.json())
-          .then(data => setVan(data.vans)) 
-          
-      }, [params.id])
-
-
+const [van] = useOutletContext();
   return (
      <main>
         <div>
