@@ -18,12 +18,12 @@ useEffect(() => {
 
 return (
     <main>
-        <h1 className='font-bold-500 text-2xl'>Your Listed Vans</h1> 
+        <h1 className='font-bold text-3xl'>Your Listed Vans</h1> 
         <div>
             {hostVan.map((item, i) =>      
             (
             <Link to={`/hosts/hvans/${item.id}`} key={i}>
-            <div  className='flex gap-2 rounded-xl drop-shadow-sm w-4/5 cursor-pointer'>
+            <div  className='flex gap-2 rounded-xl drop-shadow-sm w-full cursor-pointer'>
                 <div className='sm-image-card'>
                     <img src={item.imageUrl} alt="" />
                 </div>
