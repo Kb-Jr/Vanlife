@@ -6,7 +6,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 
 const Vanslist = () => {
 
-    const [searchParams, setSetParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
     const typeFilter = searchParams.get("type");
     
     
@@ -28,10 +28,21 @@ const Vanslist = () => {
               <h1 className='font-bold text-3xl'>Explore our Van Options</h1>        
           </div>
         <div className='flex justify-around items-center gap-3 w-2/4 md:w-full'>
-            <Link to='?type=simple' className='w-1/5 rounded-md bg-green-500 text-white hover:drop-shadow-md text-center'>Simple</Link>
-            <Link to='?type=luxury' className='w-1/5 rounded-md bg-sky-900 text-white hover:drop-shadow-md text-center'>Luxury</Link>
-            <Link to='?type=rugged' className='w-1/5 rounded-md bg-red-500  text-white hover:drop-shadow-md text-center'>Rugged</Link>
-            <Link to='.' className='w-1/5 rounded-md bg-gray-700  text-white hover:drop-shadow-md text-center'>Clear</Link>
+            <button className='w-1/5 rounded-md bg-green-500 text-white hover:drop-shadow-md text-center'
+                onClick={() => setSearchParams({type:'simple'})}
+            >Simple</button>
+
+            <button className='w-1/5 rounded-md bg-sky-900 text-white hover:drop-shadow-md text-center'
+                onClick={() => setSearchParams({type:'luxury'})}>
+            Luxury</button>
+
+            <button className='w-1/5 rounded-md bg-red-500  text-white hover:drop-shadow-md text-center'
+                onClick={() => setSearchParams({type:'rugged'})}
+            >Rugged</button>
+            
+            <button className='w-1/5 rounded-md bg-gray-700  text-white hover:drop-shadow-md text-center'
+                onClick={() => setSearchParams({type:''})}
+            >Clear</button>
         </div>
 
         <div className='flex flex-wrap items-center w-full md:w-3/4 justify-around'>
