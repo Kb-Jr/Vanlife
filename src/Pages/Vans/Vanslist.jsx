@@ -25,8 +25,15 @@ const Vanslist = () => {
     <div className='m-5 p-5 flex flex-col justify-center items-center text-gray-800 w-full'>
           
           <div className='m-3'>
-              <h1 className='font-bold text-3xl'>All Vans</h1>        
+              <h1 className='font-bold text-3xl'>Explore our Van Options</h1>        
           </div>
+        <div className='flex justify-around items-center gap-3 w-2/4 md:w-full'>
+            <Link to='?type=simple' className='w-1/5 rounded-md bg-green-500 text-white hover:drop-shadow-md text-center'>Simple</Link>
+            <Link to='?type=luxury' className='w-1/5 rounded-md bg-sky-900 text-white hover:drop-shadow-md text-center'>Luxury</Link>
+            <Link to='?type=rugged' className='w-1/5 rounded-md bg-red-500  text-white hover:drop-shadow-md text-center'>Rugged</Link>
+            <Link to='.' className='w-1/5 rounded-md bg-gray-700  text-white hover:drop-shadow-md text-center'>Clear</Link>
+        </div>
+
         <div className='flex flex-wrap items-center w-full md:w-3/4 justify-around'>
             {displayedVans.map((van, i) => (
                 <Link to={`/vans/${van.id}`} key={i}>
