@@ -15,7 +15,6 @@ useEffect(() => {
   
 }, [])
 
-console.log(hostVan)
 
 return (
     <main>
