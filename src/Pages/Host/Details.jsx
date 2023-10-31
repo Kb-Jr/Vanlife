@@ -14,7 +14,7 @@ const [van] = useOutletContext();
                 <div className='flex flex-col justify-around gap-3 font-semibold'>
                     <p>Name: {item.name}</p>
                     <p>Category: {item.type}</p>
-                    <p className='flex w-2/4 text-justify'>Description {item.description}</p>
+                    <p className='flex w-full text-justify'>Description {item.description}</p>
                     <p>Validity: Public</p>
                 </div>
             </div>

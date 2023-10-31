@@ -10,11 +10,11 @@ const Header = () => {
         <NavLink to='/'    
         >#VANLIFE
         </NavLink>
-        <NavLink to='/hosts' className={({isActive}) => isActive ? activeLink : "" } >
-          Hosts
-        </NavLink>
         <NavLink to='/about' className={({isActive}) => isActive ? activeLink : "" } >
           About
+        </NavLink>
+        <NavLink to='/hosts' className={({isActive}) => isActive ? activeLink : "" } >
+          Hosts
         </NavLink>
         <NavLink to='/vans' className={({isActive}) => isActive ? activeLink : "" } >
           Vans List

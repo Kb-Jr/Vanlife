@@ -24,7 +24,7 @@ const HostVansDetail = () => {
       }
 
   return (
-    <main>
+    <main className='w-2/3 h-full'>
         <NavLink to='hvans'>
             <div className='flex w-3/4 font-extrabold cursor-pointer hover:drop-shadow-lg'>
                 <span><BiArrowBack />Back to all vans</span>
@@ -33,7 +33,7 @@ const HostVansDetail = () => {
         <div>
             {van.map((item, i) => (
             <div key={i}>
-            <div  className='flex gap-2 rounded-xl drop-shadow-sm w-4/5'>
+            <div  className='flex gap-2 rounded-xl drop-shadow-sm w-4/5 left-0 h-full'>
                 <div className='sm-image-card'>
                     <img src={item.imageUrl} alt="" />
                 </div>
@@ -53,8 +53,9 @@ const HostVansDetail = () => {
                 <NavLink to='pricing' style={({isActive}) => isActive? activeLink : null}>Pricing</NavLink>
 
             </div>
-
+            <div>
                 <Outlet context={[van]} />
+            </div>
             </div>
             )
             )}
