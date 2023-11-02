@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams, NavLink, Outlet} from 'react-router-dom'
+import { useParams, Link, NavLink, Outlet} from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import {BiArrowBack} from 'react-icons/bi'
 
@@ -25,11 +25,11 @@ const HostVansDetail = () => {
 
   return (
     <main className='w-2/3 h-full'>
-        <NavLink to='hvans'>
+        <Link to='..' relative='path'>
             <div className='flex w-3/4 font-extrabold cursor-pointer hover:drop-shadow-lg'>
-                <span><BiArrowBack />Back to all vans</span>
+                <BiArrowBack className='mt-1'/><span className='ml-2'>Back to all vans</span>
             </div>
-        </NavLink>
+        </Link>
         <div>
             {van.map((item, i) => (
             <div key={i}>

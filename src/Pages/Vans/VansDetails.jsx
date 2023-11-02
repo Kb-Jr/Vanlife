@@ -18,7 +18,7 @@ const VansDetails = () => {
 
 
   return (
-    <div className='m-5 p-5 flex flex-col justify-center items-center rounded-2xl drop-shadow-md text-gray-800 bg-main-bg'>
+    <div className='m-5 p-5 flex flex-col justify-center items-center text-gray-800'>
 
     <div className='flex flex-wrap justify-center items-center gap-10 w-4/5 md:w-3/4'>
         
