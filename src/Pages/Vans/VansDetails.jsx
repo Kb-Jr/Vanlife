@@ -11,6 +11,9 @@ const VansDetails = () => {
     const [van, setVan] = useState([])
     const location = useLocation();
     const search = location.state?.search || '';
+    const type = location.state?.type || 'all';
+    
+    
 
     useEffect(() => {
         fetch(`/api/vans/${params.id}`)
@@ -25,8 +28,9 @@ const VansDetails = () => {
 
     <div className='flex flex-wrap justify-center items-center gap-10 w-4/5 md:w-3/4'>
         <Link to={`..${search}`} relative='path'>
+            
             <div className='flex w-full font-extrabold cursor-pointer hover:drop-shadow-lg'>
-                <BiArrowBack className='mt-1'/><span className='ml-2'>Back to all vans</span>
+                <BiArrowBack className='mt-1'/><span className='ml-2'>Back to {type} vans</span>
             </div>
         </Link>
         

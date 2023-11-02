@@ -63,7 +63,7 @@ const Vanslist = () => {
 
             <div className='flex flex-wrap items-center w-full md:w-3/4 justify-around'>
                 {displayedVans.map((van, i) => (
-                    <Link to={van.id} key={i} state={{search:`?${searchParams.toString()}`}}>
+                    <Link to={van.id} key={i} state={{search:`?${searchParams.toString()}`, type: typeFilter}}>
                         <div className='flex flex-col items-center justify-around cursor-pointer hover:drop-shadow-md mb-5'>
                             <div className="image-card">
                                 <img src={van.imageUrl} alt=""  className='image'/>
