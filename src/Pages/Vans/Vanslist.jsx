@@ -40,9 +40,12 @@ const Vanslist = () => {
                 onClick={() => setSearchParams({type:'rugged'})}
             >Rugged</button>
             
-            <button className='w-1/5 rounded-md bg-gray-700  text-white hover:drop-shadow-md text-center'
-                onClick={() => setSearchParams({type:''})}
-            >Clear</button>
+            { typeFilter ? (
+                <button className='w-1/5 rounded-md bg-gray-700  text-white hover:drop-shadow-md text-center'
+                onClick={() => setSearchParams({})}
+                >Clear
+                </button> ) : null
+            }
         </div>
 
         <div className='flex flex-wrap items-center w-full md:w-3/4 justify-around'>
