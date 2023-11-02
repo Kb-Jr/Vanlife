@@ -23,6 +23,8 @@ const HostVansDetail = () => {
         fontWeight: 'bold'
       }
 
+      
+
   return (
     <main className='w-2/3 h-full'>
         <Link to='..' relative='path'>

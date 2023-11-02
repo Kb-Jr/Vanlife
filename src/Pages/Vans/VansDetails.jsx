@@ -1,14 +1,17 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react';
+import {BiArrowBack} from 'react-icons/bi'
+
 import '../../server'
 
 
 const VansDetails = () => {
     const params = useParams();
     const [van, setVan] = useState([])
+    const location = useLocation();
+    const search = location.state?.search || '';
 
-    
     useEffect(() => {
         fetch(`/api/vans/${params.id}`)
           .then(res => res.json())
@@ -21,6 +24,11 @@ const VansDetails = () => {
     <div className='m-5 p-5 flex flex-col justify-center items-center text-gray-800'>
 
     <div className='flex flex-wrap justify-center items-center gap-10 w-4/5 md:w-3/4'>
+        <Link to={`..${search}`} relative='path'>
+            <div className='flex w-full font-extrabold cursor-pointer hover:drop-shadow-lg'>
+                <BiArrowBack className='mt-1'/><span className='ml-2'>Back to all vans</span>
+            </div>
+        </Link>
         
         <div className='flex flex-col items-center justify-around cursor-pointer hover:drop-shadow-md'>
             <div className="image-card">

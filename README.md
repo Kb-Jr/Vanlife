@@ -38,6 +38,8 @@ We are building a mock single page app for the purpose of practicing the usage o
 - To display data from pages that are children of a layout route we use the outlet as some sort of passage. In some cases we might need to share data or state from the layout component to other children component. Usually when trying to share state amongst different components, we use the Global state. In react router, we can easily pass in the state(s) as  context to the outlet component and call useOutletContext hook in the child component(s) to make the state accessible in these components.
 
 
+#### Optional chaining
+
 
 - Other hooks used include useEffect, useState....
 
