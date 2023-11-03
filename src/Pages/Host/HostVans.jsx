@@ -15,12 +15,7 @@ useEffect(() => {
   
 }, [])
 
-
-return (
-    <main>
-        <h1 className='font-bold text-3xl'>Your Listed Vans</h1> 
-        <div>
-            {hostVan.map((item, i) =>      
+const hostVansEls = hostVan.map((item, i) =>      
             (
             <Link to={item.id} key={i}>
             <div  className='flex gap-2 rounded-xl drop-shadow-sm w-full cursor-pointer'>
@@ -34,9 +29,20 @@ return (
             </div>
             </Link>
             )
-            )}
-        </div>
-    </main>  
+        )
+
+return (
+    <main>
+        <h1 className='font-bold text-3xl'>Your Listed Vans</h1> 
+            
+        
+            
+            {
+                hostVan.length > 0 ? (
+                    <div>{hostVansEls}</div>
+                ) : (<h2>Loading.....</h2>)
+            }
+       </main>  
     
 )
 }
