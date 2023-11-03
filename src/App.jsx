@@ -15,6 +15,7 @@ import './server'
 import Pricing from './Pages/Host/Pricing'
 import Photos from './Pages/Host/Photos'
 import Details from './Pages/Host/Details'
+import ErrorPage from './Pages/ErrorPage'
 
 function App() {
   return(
@@ -39,6 +40,7 @@ function App() {
           <Route path="reviews" element={<Reviews />}/>
 
         </Route>
+        <Route path='*' element={< ErrorPage/>}/>
       </Route>
     </Routes>
   </BrowserRouter>
