@@ -2,19 +2,23 @@ import React from 'react'
 import '../../server'
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
+import { getVans } from '../../../api'
 
 
 const Vanslist = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const typeFilter = searchParams.get("type");
-    
-    
+
     const [vans, setVans] = useState([]);
+
     useEffect(() => {
-        fetch("/api/vans")
-          .then((response) => response.json())
-          .then((data) => setVans(data.vans)) 
+        async function loadVans() {
+            const data = await getVans();
+            setVans(data);
+        } 
+
+        loadVans();
           
       }, [])
 
