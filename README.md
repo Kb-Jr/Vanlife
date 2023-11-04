@@ -42,7 +42,9 @@ We are building a mock single page app for the purpose of practicing the usage o
 #### Passing state through links
 #### Splat Route or catch all route
 #### Happy Path vs Sad path 
-
+#### Loaders
+#### CreateBrowserRouter
+- Regular Browser Router does not allow the use of data APIs
 
 - Other hooks used include useEffect, useState....
 

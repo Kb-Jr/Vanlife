@@ -1,9 +1,14 @@
 import React from 'react'
 import '../../server'
 import { useEffect, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams, useLoaderData } from 'react-router-dom'
 import { getVans } from '../../../api'
+import { data } from 'autoprefixer'
 
+export function loader() {
+    return getVans();
+    
+}
 
 const Vanslist = () => {
 
@@ -12,6 +17,8 @@ const Vanslist = () => {
 
     const [vans, setVans] = useState([]);
     const [loading, setLoading] = useState(false);
+    const laoderData = useLoaderData();
+    console.log(laoderData);
 
     useEffect(() => {
         async function loadVans() {

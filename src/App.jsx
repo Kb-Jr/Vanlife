@@ -1,8 +1,8 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom'
 import Home from './Pages/Home'
 import About from './Pages/About'
-import Vanslist from './Pages/Vans/Vanslist'
+import Vanslist, {loader as vansListLoader} from './Pages/Vans/Vanslist'
 import VansDetails from './Pages/Vans/VansDetails'
 import Income from './Pages/Host/Income'
 import Reviews from './Pages/Host/Reviews'
@@ -18,14 +18,12 @@ import Details from './Pages/Host/Details'
 import ErrorPage from './Pages/ErrorPage'
 
 function App() {
-  return(
-  <BrowserRouter>
-    <Routes>
+  const router = createBrowserRouter(createRoutesFromElements(
       <Route element={<Layout />}>
-        <Route path="/" element={<Home />}/>
-        <Route path="about" element={<About />}/>
-        <Route path="vans" element={<Vanslist />}/>
-        <Route path="vans/:id" element={<VansDetails />}/>
+          <Route path="/" element={<Home />}/>
+          <Route path="about" element={<About />}/>
+          <Route path="vans" element={<Vanslist />} loader={vansListLoader}/>
+          <Route path="vans/:id" element={<VansDetails />}/>
 
         <Route path='hosts' element={<Hosts />}>
           <Route index element={< Dashboard/>} />
@@ -36,14 +34,16 @@ function App() {
             <Route path='pricing' element={<Pricing />}/>
             <Route path='photos' element={<Photos />}/>
           </Route>
-
           <Route path="reviews" element={<Reviews />}/>
 
         </Route>
         <Route path='*' element={< ErrorPage/>}/>
-      </Route>
-    </Routes>
-  </BrowserRouter>
+    </Route>
+  ))
+
+
+  return(
+  <RouterProvider router={router}/>
 )
 }
 
