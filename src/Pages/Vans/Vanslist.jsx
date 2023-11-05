@@ -14,28 +14,7 @@ const Vanslist = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const typeFilter = searchParams.get("type");
-
-    const [vans, setVans] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const laoderData = useLoaderData();
-    console.log(laoderData);
-
-    useEffect(() => {
-        async function loadVans() {
-            setLoading(true)
-            try {
-                const data = await getVans();
-                setVans(data);
-            } catch (err){
-                console.log("There was an error")
-            }
-            
-            setLoading(false)
-        } 
-
-        loadVans();
-          
-      }, [])
+    const vans = useLoaderData();
 
 
       const displayedVans = typeFilter ? vans.filter(van => van.type.toLowerCase() === typeFilter)  : vans;
@@ -98,7 +77,7 @@ const Vanslist = () => {
 return (
         <main>
             {
-                loading ? (<h2>Loading....</h2>) : (vanslistEls)
+               vanslistEls
             }
         </main>
         
