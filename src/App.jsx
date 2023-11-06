@@ -17,6 +17,8 @@ import Photos from './Pages/Host/Photos'
 import Details from './Pages/Host/Details'
 import ErrorPage from './Pages/ErrorPage'
 import Error from './Pages/Vans/Error'
+import Login from './Pages/Login'
+import { requireAuth } from './utils'
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
@@ -25,6 +27,7 @@ function App() {
           <Route path="about" element={<About />}/>
           <Route path="vans" element={<Vanslist />} loader={vansListLoader} errorElement={< Error/>}/>
           <Route path="vans/:id" element={<VansDetails />} loader={vanDetailLoader}/>
+          <Route path="login" element={<Login />}/>
 
     
         <Route path='hosts' element={<Hosts />} loader={async () => {
@@ -32,10 +35,7 @@ function App() {
           
           return null;
       }}>
-          <Route index element={< Dashboard/>} loader={async () => {
-          
-          return null;
-      }} />
+          <Route index element={< Dashboard/>} loader={async () => await requireAuth()} />
           <Route path="income" element={<Income />} loader={async () => {
           
           return null;
