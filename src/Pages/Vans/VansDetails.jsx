@@ -1,26 +1,20 @@
 import React from 'react'
-import { useParams, Link, useLocation } from 'react-router-dom'
+import { useParams, Link, useLocation, useLoaderData } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import {BiArrowBack} from 'react-icons/bi'
 
 import '../../server'
+import { getVans } from '../../../api';
 
+export function loader ({params}) {
+    return getVans(params.id);
+}
 
 const VansDetails = () => {
-    const params = useParams();
-    const [van, setVan] = useState([])
+    const van = useLoaderData();
     const location = useLocation();
     const search = location.state?.search || '';
     const type = location.state?.type || 'all';
-    
-    
-
-    useEffect(() => {
-        fetch(`/api/vans/${params.id}`)
-          .then(res => res.json())
-          .then(data => setVan(data.vans)) 
-          
-      }, [params.id])
 
 
   return (

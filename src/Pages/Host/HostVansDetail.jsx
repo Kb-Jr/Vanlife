@@ -1,21 +1,17 @@
 import React from 'react'
-import { useParams, Link, NavLink, Outlet} from 'react-router-dom'
+import { useParams, Link, NavLink, Outlet, useLoaderData} from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import {BiArrowBack} from 'react-icons/bi'
+import { getHostVans } from '../../../api';
 
-
+export function loader ({params}) {
+    return getHostVans(params.id)
+}
 
 const HostVansDetail = () => {
 
-    const params = useParams();
-    const [van, setVan] = useState([])
+    const van =  useLoaderData()
 
-    useEffect(() => {
-        fetch(`/api/host/vans/${params.id}`)
-          .then(res => res.json())
-          .then(data => setVan(data.vans)) 
-          
-      }, [params.id])
 
       const activeLink = {
         color: '#f05a28',

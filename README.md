@@ -42,7 +42,10 @@ We are building a mock single page app for the purpose of practicing the usage o
 #### Passing state through links
 #### Splat Route or catch all route
 #### Happy Path vs Sad path 
+#### UseLocation
 #### Loaders
+#### Error handling
+#### Protected Routes - Auth Required
 - Loader function runs before the component mounts and the route change happens
 #### CreateBrowserRouter
 - Regular Browser Router does not allow the use of data APIs
