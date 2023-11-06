@@ -16,13 +16,13 @@ import Pricing from './Pages/Host/Pricing'
 import Photos from './Pages/Host/Photos'
 import Details from './Pages/Host/Details'
 import ErrorPage from './Pages/ErrorPage'
-
+import Error from './Pages/Vans/Error'
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
       <Route element={<Layout />}>
           <Route path="/" element={<Home />}/>
           <Route path="about" element={<About />}/>
-          <Route path="vans" element={<Vanslist />} loader={vansListLoader}/>
+          <Route path="vans" element={<Vanslist />} loader={vansListLoader} errorElement={< Error/>}/>
           <Route path="vans/:id" element={<VansDetails />}/>
 
         <Route path='hosts' element={<Hosts />}>

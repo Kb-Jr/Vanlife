@@ -1,7 +1,7 @@
 export async function getVans() {
     const res = await fetch ("/api/vans");
     if (!res.ok) {
-        throw{
+        throw {
             message: "Van fetching failed",
             statusText: res.statusText,
             status: res.status

@@ -1,9 +1,8 @@
 import React from 'react'
 import '../../server'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link, useSearchParams, useLoaderData } from 'react-router-dom'
 import { getVans } from '../../../api'
-import { data } from 'autoprefixer'
 
 export function loader() {
     return getVans();
@@ -13,6 +12,7 @@ export function loader() {
 const Vanslist = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
+    const [error, setError] = useState(null);
     const typeFilter = searchParams.get("type");
     const vans = useLoaderData();
 
@@ -30,6 +30,10 @@ const Vanslist = () => {
                 return prevParams
             }
         )
+      }
+
+      if (error) {
+        return <h1>There was an error: {error.message}</h1>
       }
 
     const vanslistEls = <div className='m-5 p-5 flex flex-col justify-center items-center text-gray-800 w-full'>

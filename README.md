@@ -43,6 +43,7 @@ We are building a mock single page app for the purpose of practicing the usage o
 #### Splat Route or catch all route
 #### Happy Path vs Sad path 
 #### Loaders
+- Loader function runs before the component mounts and the route change happens
 #### CreateBrowserRouter
 - Regular Browser Router does not allow the use of data APIs
 
