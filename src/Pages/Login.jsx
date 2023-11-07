@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useSearchParams, useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
+import { loginUser } from '../../api';
 
 export const loader = ({request}) => {
   const url =  new URL(request.url).searchParams.get("message")
@@ -8,15 +9,23 @@ export const loader = ({request}) => {
 
 
 const Login = () => {
- const [email, setEmail] = useState('');
- const [password, setPassword] = useState('');
+  const [loginFormData, setLoginFormData] = useState({ email: "", password: "" })
 
  const handleSubmit = (e) => {
     e.preventDefault();
-  
+    loginUser(loginFormData)
+    .then(data => console.log(data))
  };
 
  const message = useLoaderData();
+
+ function handleChange(e) {
+  const { name, value } = e.target
+  setLoginFormData(prev => ({
+      ...prev,
+      [name]: value
+  }))
+}
 
  return (
     <div className="w-3/4 h-3/4 m-5 flex flex-col items-center justify-center">
@@ -25,12 +34,12 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <label className='font-semibold text-2xl'>
           Email:
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className='m-3 p-3' />
+          <input name="email" type="email" value={loginFormData.email} onChange={handleChange} required className='m-3 p-3' />
         </label>
         <br />
         <label className='font-semibold text-2xl'>
           Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required className='m-3 p-3 h-3/4 border-0' />
+          <input name='password' type="password" value={loginFormData.password} onChange={handleChange} required className='m-3 p-3 h-3/4 border-0' />
         </label>
         <br />
         <button type="submit" className='w-1/4 bg-slate-700 text-gray-200 hover:shadow-xl rounded-md m-3 p-3'>Login</button>
