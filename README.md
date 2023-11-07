@@ -52,6 +52,16 @@ We are building a mock single page app for the purpose of practicing the usage o
 
 - Other hooks used include useEffect, useState....
 
+#### benefits of using loaders as opposed to having an Authrequire wrapping around the protected routes
+
+#### UseSearchparms (augument previous)
+- query string takes in key and value
+- comes with a variable and a setter like useState
+
+#### useParams vs useSearchParams
+
+### MDN url
+
 ## Resources
 - https://reactrouter.com/en/main/router-components/browser-router
 - https://reactrouter.com/en/main/components/nav-link#end
