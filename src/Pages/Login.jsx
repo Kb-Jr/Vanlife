@@ -20,8 +20,8 @@ const Login = () => {
 
  return (
     <div className="w-3/4 h-3/4 m-5 flex flex-col items-center justify-center">
-      {message && <div><h1 className='font-semibold text-2xl m-3 p-3'>{message}</h1></div>}
       <h1 className='font-bold text-3xl m-3'>Sign in to your Account</h1>
+      {message && <div><h1 className='font-semibold text-red-500 text-2xl m-3 p-3'>{message}</h1></div>}
       <form onSubmit={handleSubmit}>
         <label className='font-semibold text-2xl'>
           Email:
