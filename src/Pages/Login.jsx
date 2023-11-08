@@ -14,7 +14,7 @@ export async function action ({request}) {
     const email = formData.get("email")
     const password = formData.get("password")
     const data = await loginUser({email, password})
-    console.log(data)
+    localStorage.setItem("logged in", true)
   return null
 }
 
@@ -44,7 +44,7 @@ const Login = () => {
       <Form method='Post'>
         <label className='font-semibold text-2xl'>
           Email:
-          <input name="email" type="email" required className='m-3 p-3' />
+          <input name="email" type="email" required autoComplete='true' className='m-3 p-3' />
         </label>
         <br />
         <label className='font-semibold text-2xl'>
