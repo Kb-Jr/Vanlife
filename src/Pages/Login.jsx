@@ -9,13 +9,16 @@ export const loader = ({request}) => {
   return url;
  }
 
-export async function action () {
-  console.log("Action function")
+export async function action ({request}) {
+    const formData = await request.formData();
+    const email = formData.get("email")
+    const password = formData.get("password")
+    const data = await loginUser({email, password})
+    console.log(data)
   return null
 }
 
 const Login = () => {
-  const [loginFormData, setLoginFormData] = useState({ email: "", password: "" })
   const [status, setstatus] = useState("idle");
   const [error, seterror] = useState(null)
   const navigate = useNavigate()
@@ -32,13 +35,6 @@ const Login = () => {
 
  const message = useLoaderData();
 
- function handleChange(e) {
-  const { name, value } = e.target
-  setLoginFormData(prev => ({
-      ...prev,
-      [name]: value
-  }))
-}
 
  return (
     <div className="w-3/4 h-3/4 m-5 flex flex-col items-center justify-center">
@@ -48,12 +44,12 @@ const Login = () => {
       <Form method='Post'>
         <label className='font-semibold text-2xl'>
           Email:
-          <input name="email" type="email" value={loginFormData.email} onChange={handleChange} required className='m-3 p-3' />
+          <input name="email" type="email" required className='m-3 p-3' />
         </label>
         <br />
         <label className='font-semibold text-2xl'>
           Password:
-          <input name='password' type="password" value={loginFormData.password} onChange={handleChange} required className='m-3 p-3 h-3/4 border-0' />
+          <input name='password' type="password" required className='m-3 p-3 h-3/4 border-0' />
         </label>
         <br />
         <button type="submit" className='w-1/4 bg-slate-700 text-gray-200 hover:shadow-xl rounded-md m-3 p-3'

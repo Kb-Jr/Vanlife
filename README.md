@@ -69,6 +69,10 @@ We are building a mock single page app for the purpose of practicing the usage o
 #### useNavigate
 #### redirect
 
+#### Request and params 07:27
+
+#### FormData object MDN docs
+
 ## Resources
 - https://reactrouter.com/en/main/router-components/browser-router
 - https://reactrouter.com/en/main/components/nav-link#end
