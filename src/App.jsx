@@ -30,7 +30,7 @@ function App() {
           <Route path="login" element={<Login />} loader={loginLoader} action={loginAction}/>
 
     
-        <Route path='hosts' element={<Hosts />}>
+        <Route path="hosts" element={<Hosts />}>
           <Route index element={< Dashboard/>} loader={async () => await requireAuth()} />
           
           <Route path="income" element={<Income />} loader={async () => await requireAuth()}/>

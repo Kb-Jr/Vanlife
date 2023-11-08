@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../api';
 import { Form } from 'react-router-dom';
 
@@ -15,7 +15,8 @@ export async function action ({request}) {
     const password = formData.get("password")
     const data = await loginUser({email, password})
     localStorage.setItem("logged in", true)
-  return null
+    return redirect("/hosts")
+   
 }
 
 const Login = () => {
@@ -41,7 +42,7 @@ const Login = () => {
       <h1 className='font-bold text-3xl m-3'>Sign in to your Account</h1>
       {message && <div><h1 className='font-semibold text-red-500 text-2xl m-3 p-3'>{message}</h1></div>}
       {error && <div><h1 className='font-semibold text-red-500 text-2xl m-3 p-3'>{error.message}</h1></div>}
-      <Form method='Post'>
+      <Form method='Post' replace>
         <label className='font-semibold text-2xl'>
           Email:
           <input name="email" type="email" required autoComplete='true' className='m-3 p-3' />

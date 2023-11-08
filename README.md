@@ -67,11 +67,16 @@ We are building a mock single page app for the purpose of practicing the usage o
 #### Navigate component
 
 #### useNavigate
+- can only be called inside of a functional component
+- What is a functional component?
+
 #### redirect
 
 #### Request and params 07:27
 
 #### FormData object MDN docs
+
+#### history stack - Form submission considered a navigation event - the use of replace prop
 
 ## Resources
 - https://reactrouter.com/en/main/router-components/browser-router
