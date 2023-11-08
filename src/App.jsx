@@ -17,7 +17,7 @@ import Photos from './Pages/Host/Photos'
 import Details from './Pages/Host/Details'
 import ErrorPage from './Pages/ErrorPage'
 import Error from './Pages/Vans/Error'
-import Login, {loader as loginLoader} from './Pages/Login'
+import Login, {loader as loginLoader, action as loginAction} from './Pages/Login'
 import { requireAuth } from './utils'
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
           <Route path="about" element={<About />}/>
           <Route path="vans" element={<Vanslist />} loader={vansListLoader} errorElement={< Error/>}/>
           <Route path="vans/:id" element={<VansDetails />} loader={vanDetailLoader}/>
-          <Route path="login" element={<Login />} loader={loginLoader}/>
+          <Route path="login" element={<Login />} loader={loginLoader} action={loginAction}/>
 
     
         <Route path='hosts' element={<Hosts />}>

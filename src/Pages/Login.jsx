@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../api';
+import { Form } from 'react-router-dom';
+
 
 export const loader = ({request}) => {
   const url =  new URL(request.url).searchParams.get("message")
   return url;
  }
 
+export async function action () {
+  console.log("Action function")
+  return null
+}
 
 const Login = () => {
   const [loginFormData, setLoginFormData] = useState({ email: "", password: "" })
@@ -39,7 +45,7 @@ const Login = () => {
       <h1 className='font-bold text-3xl m-3'>Sign in to your Account</h1>
       {message && <div><h1 className='font-semibold text-red-500 text-2xl m-3 p-3'>{message}</h1></div>}
       {error && <div><h1 className='font-semibold text-red-500 text-2xl m-3 p-3'>{error.message}</h1></div>}
-      <form onSubmit={handleSubmit}>
+      <Form method='Post'>
         <label className='font-semibold text-2xl'>
           Email:
           <input name="email" type="email" value={loginFormData.email} onChange={handleChange} required className='m-3 p-3' />
@@ -54,7 +60,7 @@ const Login = () => {
           disabled={status === "submitting"}>
             {status === "submitting" ? "Logging in..." : "Log in"}
         </button>
-      </form>
+      </Form>
     </div>
  );
 };
