@@ -87,6 +87,11 @@ We are building a mock single page app for the purpose of practicing the usage o
 ## 
 - Await can only be used on a function returning a promise. An async function returns a promise. Now what is a promise?
 
+#### Defer
+
+#### Await
+
+#### Render Props
 ## Resources
 - https://reactrouter.com/en/main/router-components/browser-router
 - https://reactrouter.com/en/main/components/nav-link#end
