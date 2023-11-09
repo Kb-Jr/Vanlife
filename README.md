@@ -45,6 +45,7 @@ We are building a mock single page app for the purpose of practicing the usage o
 #### Data layer APIs
 #### UseLocation
 #### Loaders
+- The code in the loader needs to complete before the component gets rendered
 #### Error handling
 #### Protected Routes - Auth Required
 - Loader function runs before the component mounts and the route change happens
@@ -82,6 +83,9 @@ We are building a mock single page app for the purpose of practicing the usage o
 #### UseActionData
 
 #### useNavigation hook
+
+## 
+- Await can only be used on a function returning a promise. An async function returns a promise. Now what is a promise?
 
 ## Resources
 - https://reactrouter.com/en/main/router-components/browser-router
