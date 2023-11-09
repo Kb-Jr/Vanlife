@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
+import { redirect, useLoaderData, useNavigate, useActionData, useNavigation } from 'react-router-dom';
 import { loginUser } from '../../api';
 import { Form } from 'react-router-dom';
 
@@ -9,31 +9,26 @@ export const loader = ({request}) => {
   return url;
  }
 
+
 export async function action ({request}) {
     const formData = await request.formData();
     const email = formData.get("email")
     const password = formData.get("password")
-    const data = await loginUser({email, password})
-    localStorage.setItem("logged in", true)
-    return redirect("/hosts")
-   
+    try{
+      const data = await loginUser({email, password})
+      localStorage.setItem("logged in", true)
+      return redirect("/hosts")
+    }
+    catch(err){ 
+      return err.message
+    }
+    
 }
 
 const Login = () => {
-  const [status, setstatus] = useState("idle");
-  const [error, seterror] = useState(null)
-  const navigate = useNavigate()
-
- const handleSubmit = (e) => {
-    e.preventDefault();
-    setstatus("submitting")
-    seterror(null)
-    loginUser(loginFormData)
-    .then(data => {navigate("/hosts", {replace: true})})
-    .catch(err => seterror(err))
-    .finally(() => setstatus("idle"))
- };
-
+   const errorMessage = useActionData();
+  const navigation = useNavigation();
+  
  const message = useLoaderData();
 
 
@@ -41,7 +36,7 @@ const Login = () => {
     <div className="w-3/4 h-3/4 m-5 flex flex-col items-center justify-center">
       <h1 className='font-bold text-3xl m-3'>Sign in to your Account</h1>
       {message && <div><h1 className='font-semibold text-red-500 text-2xl m-3 p-3'>{message}</h1></div>}
-      {error && <div><h1 className='font-semibold text-red-500 text-2xl m-3 p-3'>{error.message}</h1></div>}
+      {errorMessage && <div><h1 className='font-semibold text-red-500 text-2xl m-3 p-3'>{errorMessage}</h1></div>}
       <Form method='Post' replace>
         <label className='font-semibold text-2xl'>
           Email:
@@ -54,8 +49,8 @@ const Login = () => {
         </label>
         <br />
         <button type="submit" className='w-1/4 bg-slate-700 text-gray-200 hover:shadow-xl rounded-md m-3 p-3'
-          disabled={status === "submitting"}>
-            {status === "submitting" ? "Logging in..." : "Log in"}
+          disabled={navigation.state === "submitting"}>
+            {navigation.state === "submitting" ? "Logging in..." : "Log in"}
         </button>
       </Form>
     </div>
