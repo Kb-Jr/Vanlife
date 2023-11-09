@@ -46,7 +46,7 @@ We are building a mock single page app for the purpose of practicing the usage o
 #### UseLocation
 #### Loaders
 - The code in the loader needs to complete before the component gets rendered
-#### Error handling
+#### Error handling / Error route/ boundary
 #### Protected Routes - Auth Required
 - Loader function runs before the component mounts and the route change happens
 #### CreateBrowserRouter
@@ -90,6 +90,10 @@ We are building a mock single page app for the purpose of practicing the usage o
 #### Defer
 
 #### Await
+
+
+#### Suspense
+
 
 #### Render Props
 ## Resources

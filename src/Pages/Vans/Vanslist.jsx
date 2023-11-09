@@ -1,4 +1,5 @@
 import React from 'react'
+import { Suspense } from 'react'
 import '../../server'
 import { useState } from 'react'
 import { Link, useSearchParams, useLoaderData, defer, Await } from 'react-router-dom'
@@ -36,15 +37,11 @@ const Vanslist = () => {
         return <h1>There was an error: {error.message}</h1>
     }
 
-
-return (
-
-<Await resolve={dataPromise.vans} >
-    {vans => {
+function renderVanEls(vans){
         const displayedVans = typeFilter ? vans.filter(van => van.type.toLowerCase() === typeFilter)  : vans;
         const vanslistEls = 
         <>
-            ``<div className='flex justify-around items-center gap-3 w-2/4 md:w-full'>
+            <div className='flex justify-around items-center gap-3 w-2/4 md:w-full'>
                 <button className='w-1/5 rounded-md bg-green-500 text-white hover:drop-shadow-md text-center'
                     onClick={() => handleFilterChange("type", "simple")}
                 >Simple</button>
@@ -94,12 +91,16 @@ return (
         </main>
         
     )
-    }
 }
 
 
-
-    </Await>)
+return (
+    <Suspense fallback={<h1 className='m-20 p-20 font-bold text-3xl'>Loading....</h1>}>
+    <Await resolve={dataPromise.vans} >
+        {renderVanEls}
+    </Await>
+</Suspense>    
+)
         
 }
 
