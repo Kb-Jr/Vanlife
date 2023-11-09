@@ -42,6 +42,7 @@ We are building a mock single page app for the purpose of practicing the usage o
 #### Passing state through links
 #### Splat Route or catch all route
 #### Happy Path vs Sad path 
+#### Data layer APIs
 #### UseLocation
 #### Loaders
 #### Error handling

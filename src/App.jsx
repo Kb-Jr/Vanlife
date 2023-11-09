@@ -31,17 +31,17 @@ function App() {
 
     
         <Route path="hosts" element={<Hosts />}>
-          <Route index element={< Dashboard/>} loader={async () => await requireAuth()} />
+        <Route index element={< Dashboard/>} loader={async ({request}) => await requireAuth(request)} />
           
-          <Route path="income" element={<Income />} loader={async () => await requireAuth()}/>
+          <Route path="income" element={<Income />} loader={async ({request}) => await requireAuth(request)}/>
 
           <Route path="hvans" element={<HostVans />} loader={hostVansLoader}/>
           <Route path="hvans/:id" element={<HostVansDetail />} loader={hostVansDetailLoader}>
-            <Route index element={<Details />} loader={async () => await requireAuth()}/>
-            <Route path='pricing' element={<Pricing />} loader={async () => await requireAuth()}/>
-            <Route path='photos' element={<Photos />} loader={async () => await requireAuth()}/>
+            <Route index element={<Details />} loader={async ({request}) => await requireAuth(request)}/>
+            <Route path='pricing' element={<Pricing />} loader={async ({request}) => await requireAuth(request)}/>
+            <Route path='photos' element={<Photos />} loader={async ({request}) => await requireAuth(request)}/>
           </Route>
-          <Route path="reviews" element={<Reviews />} loader={async () => await requireAuth()}/>
+          <Route path="reviews" element={<Reviews />} loader={async ({request}) => await requireAuth(request)}/>
 
         </Route>
       
