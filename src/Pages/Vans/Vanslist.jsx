@@ -19,6 +19,7 @@ const Vanslist = () => {
     const [error, setError] = useState(null);
     const typeFilter = searchParams.get("type");
     const dataPromise = useLoaderData();
+    console.log(dataPromise)
 
     const handleFilterChange = (key, value) => {
     setSearchParams(
@@ -36,6 +37,7 @@ const Vanslist = () => {
     if (error) {
         return <h1>There was an error: {error.message}</h1>
     }
+
 
 function renderVanEls(vans){
         const displayedVans = typeFilter ? vans.filter(van => van.type.toLowerCase() === typeFilter)  : vans;
@@ -62,7 +64,7 @@ function renderVanEls(vans){
                 }
             </div>
 
-            <div className='flex flex-wrap items-center w-full md:w-3/4 justify-around'>
+            <div className='flex flex-wrap items-center mx-auto mt-10 w-full md:w-3/4 justify-around'>
                 {displayedVans.map((van, i) => (
                     <Link to={van.id} key={i} state={{search:`?${searchParams.toString()}`, type: typeFilter}}>
                         <div className='flex flex-col items-center justify-around cursor-pointer hover:drop-shadow-md mb-5'>

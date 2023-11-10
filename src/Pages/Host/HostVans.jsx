@@ -1,19 +1,25 @@
-import React from 'react'
-import { Link, useLoaderData } from 'react-router-dom';
+import React, {Suspense} from 'react'
+import { Link, useLoaderData,defer, Await } from 'react-router-dom';
 import '../../server'
 import { getHostVans } from '../../../api';
 import { requireAuth } from '../../utils';
 
 export async function loader ({request}) {
     await requireAuth(request)
-    return getHostVans();
+    return defer({data:getHostVans()})
 }
 
 const HostVans = () => {
-    const hostVan = useLoaderData();
+    const dataPromise = useLoaderData();
+    console.log(dataPromise)
 
-
-const hostVansEls = hostVan.map((item, i) =>      
+function renderHostVan(data){
+    
+        const hostvans = data
+        console.log(hostvans)
+        const hostvansEls =
+        <>
+        {hostvans.map((item, i) =>      
             (
             <Link to={item.id} key={i}>
             <div  className='flex gap-2 rounded-xl drop-shadow-sm w-full cursor-pointer'>
@@ -29,12 +35,25 @@ const hostVansEls = hostVan.map((item, i) =>
             )
         )
 
+    }
+    </>
+
 return (
     <main>
-        <h1 className='font-bold text-3xl'>Your Listed Vans</h1>   
-                <div>{hostVansEls}</div>
-       </main>  
-    
+    <h1 className='font-bold text-3xl'>Your Listed Vans</h1>   
+    {hostvansEls}
+    </main>
+
+)
+}
+
+ 
+return (
+    <Suspense fallback={<h1 className='m-20 p-20 font-bold text-3xl'>Loading Your Vans....</h1>}>
+        <Await resolve={dataPromise.data}>
+                {renderHostVan}
+        </Await> 
+    </Suspense>
 )
 }
 

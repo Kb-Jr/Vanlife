@@ -4,22 +4,21 @@ import { useOutletContext } from 'react-router-dom';
 const Details = () => {
    
 
-const [van] = useOutletContext();
+const [data] = useOutletContext();
   return (
      <main>
         <div>
-            {van.map((item, i) => (
-            <div key={i}>
+            {
+            <div>
 
                 <div className='flex flex-col justify-around gap-3 font-semibold'>
-                    <p>Name: {item.name}</p>
-                    <p>Category: {item.type}</p>
-                    <p className='flex w-full text-justify'>Description {item.description}</p>
+                    <p>Name: {data.name}</p>
+                    <p>Category: {data.type}</p>
+                    <p className='flex w-full text-justify'>Description {data.description}</p>
                     <p>Validity: Public</p>
                 </div>
             </div>
-            )
-            )}
+            }
         </div>
     </main>  
   )

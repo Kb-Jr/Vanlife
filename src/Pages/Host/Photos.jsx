@@ -3,15 +3,14 @@ import { useOutletContext } from 'react-router-dom';
 
 const Photos = () => {
 
-  const [van, setVan] = useOutletContext();
+  const [data] = useOutletContext();
   return (
     <div className='m-3 p-2 w-3/4 font-bold text-2xl'>
-    {van.map((item, i) => (
-    <div key={i} className='sm-image-card'>
-      <img src={item.imageUrl} />
+    {
+    <div className='sm-image-card'>
+      <img src={data.imageUrl} />
     </div>
-    )
-    )}
+    }
 </div>
   )
 }
