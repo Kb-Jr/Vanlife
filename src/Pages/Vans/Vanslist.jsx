@@ -17,7 +17,6 @@ const Vanslist = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const typeFilter = searchParams.get("type");
     const dataPromise = useLoaderData();
-    console.log(dataPromise)
 
     const handleFilterChange = (key, value) => {
         setSearchParams(

@@ -11,12 +11,10 @@ export async function loader({ request }) {
 
 const HostVans = () => {
     const dataPromise = useLoaderData();
-    console.log(dataPromise)
 
     function renderHostVan(data) {
 
         const hostvans = data
-        console.log(hostvans)
         const hostvansEls =
             <>
                 {hostvans.map((item, i) =>
