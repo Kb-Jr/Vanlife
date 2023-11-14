@@ -3,6 +3,8 @@
 ## React Router Course
 We are building a mock single page app for the purpose of practicing the usage of React Router. React Router is designed to help navigate between pages or interfaces on a single page app
 
+## Table Of Contents
+
 ### Topics
 #### Setting up
 - Every component built throughout this project is going to be rendered on our 'App' component. What will be returned in this component will be a series of routes definitions. The Routes are going to be wrapped in a <BrowserRouter><BrowserRouter/> component. subsequently a <Routes><Routes/> component is declared and individual <Route> will be declared as children of the Routes. Each route is going to contain a 'to' property which states the component which the route links to and the 'element' property which specifies the element to be rendered by the when that route is visited. Some other properties include 'index' property, 'end' property and so on. BrowserRouter, Routes, and Route and components are imported from 'React-router-dom'.
