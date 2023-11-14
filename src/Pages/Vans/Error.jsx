@@ -1,8 +1,7 @@
 import React from 'react'
-import { useRouteError } from 'react-router-dom'
 
 const Error = () => {
-  const error = useRouteError();
+  
 
   return (
     <main className='z-10 m-20 p-20 h-1'>
