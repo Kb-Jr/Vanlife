@@ -3,10 +3,10 @@ import { useParams, Link, useLocation, useLoaderData, defer, Await } from 'react
 import { BiArrowBack } from 'react-icons/bi'
 
 import '../../server'
-import { getVans } from '../../../api';
+import { getVan } from '../../../api';
 
 export function loader({ params }) {
-    return defer({ data: getVans(params.id) })
+    return defer({ data: getVan(params.id) })
 }
 
 const VansDetails = () => {

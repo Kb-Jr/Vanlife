@@ -1,13 +1,13 @@
 import React, { Suspense } from 'react'
 import { useParams, Link, NavLink, Outlet, useLoaderData, defer, Await } from 'react-router-dom'
 import { BiArrowBack } from 'react-icons/bi'
-import { getHostVans } from '../../../api';
+import { getVan } from '../../../api';
 import { requireAuth } from '../../utils';
 
 
 export async function loader({ params, request }) {
     await requireAuth(request)
-    return defer({ data: getHostVans(params.id) })
+    return defer({ data: getVan(params.id) })
 }
 
 const HostVansDetail = () => {
