@@ -3,7 +3,8 @@
 ## React Router Course
 We are building a mock single page app for the purpose of practicing the usage of React Router. React Router is designed to help navigate between pages or interfaces on a single page app
 
-## Table Of Contents
+## Table Of Contents ##################
+- [Setting up](#Setting-up)
 
 ### Topics
 #### Setting up
