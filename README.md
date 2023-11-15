@@ -66,7 +66,7 @@ We are building a mock single page app for the purpose of practicing the usage o
 
 
 #### CreateBrowserRouter
-- In the createBrowserRouter functin we can pass in another function named createRoutesFromElements which just as the name implies creates routes from elements. The alternative would be to create the routes manually which will be a series of objects. Routes created using the createBrowser router allows us to use methods of data fetching and error handling specified as props within the routes. Examples are the loader prop and errorElement prop.  
+- In the createBrowserRouter functin we can pass in another function named createRoutesFromElements which just as the name implies creates routes from elements. The alternative would be to create the routes manually which will be a series of objects. Routes created using the createBrowser router allows us to use methods of data fetching and error handling specified as props within the routes. Examples are the loader prop, errorElement prop, actions and others.  
 
 #### Loaders
 - Using loaders provide an alternative and more intuitive way of fetching data. The popular method involves the use of the useEffect hook, which triggers whenever the page is loaded or reloaded. In this method, the data starts getting fetched when the component is mounted. Using loaders, the data starts getting fetched before the component is mounted, rather theres a slight delay in the mounting of the component. The code in the loader needs to complete before the component gets rendered. Using this method, when the component mounts, it mounts with most if not all of the data already loaded. To use this loading property, a loader is defined at its purpose is to handle the fetching of data from an API or any server, the loader function is exported and imported to the file containing the routes. This loader is then assigned to the loader prop which is added to the route on which we intend to use the data being fetched. On the component which this data is needed (which is the component of the element on the route stated), the useLoaderData function is called and what is returned is assigned to a variable which can be used in that component. 
@@ -74,54 +74,33 @@ We are building a mock single page app for the purpose of practicing the usage o
 #### UseLocation
 
 
+
 #### Protected Routes - Auth Required
-- Loader function runs before the component mounts and the route change happens
+- In some cases we might want to restrict access to some routes and only grant access to Logged in or authenticated users. We can do this by encapsulating the routes we want to protect in a parent route. This parent route will be a component which checks if the user is logged in or not. If the user is logged in, the component will return the Outlet to the child routes, else the user will be forcefully redirected to the login page using the <Navigate /> component. The Navigate component changes a current location when its rendered, it accepts props such as "to", "replace" as well as others. Another method applied would be to use loaders. A loader function which requires the users authentication before proceeding is used. If the users logged in status is true, then the loader proceeds to fetch the data and render the page, otherwise the user is taken to the login page. The changing of the users location to the login page is done by the utilization of "redirect()". Redirect is recommended for use in loaders and actions as opposed to useNavigate which is used in hooks and components. 
 
 
-#### benefits of using loaders as opposed to having an Authrequire wrapping around the protected routes
+#### History stack - Form submission considered a navigation event - the use of replace prop
+- On making contigencies, users may have some undesired experiences in some instances which needs to be guarded against. for example, a user inputs their log in credentials and are logged in but when they click on the "back" button on their browsers they are automatically taken back to the log in page, this is not a favorable experience and needs to be tackled. A browser retains a history of routes visited in sort of an array, which can be referred to as the history stack. As you transition from one route to the other, the routes are automatically added to the history stack. Submitting a form such as a login form is treated as navigation event, adding a "replace" prop to the form element ensures that the history stack does away with this log in page and replaces it with the upcoming entry in the history stack. 
 
-#### UseSearchparams (augument previous)
-- 
-
-#### useParams vs useSearchParams
-
-### MDN url
-
-### Request
-
-#### Navigate component
-
-#### useNavigate
-- can only be called inside of a functional component
-- What is a functional component?
-
-#### redirect
-
-#### Request and params 07:27
-
-#### FormData object MDN docs
-
-#### history stack - Form submission considered a navigation event - the use of replace prop
 
 #### UseActionData
+- This hook provides the returned value from the previous navigation's action result, or undefined if there was no submission. It is usually used during form validations to retrieve error messages that can be returned and displayed to the user so they can make another attempt. 
 
-#### useNavigation hook
-
-## 
-- Await can only be used on a function returning a promise. An async function returns a promise. Now what is a promise?
+#### Asynchronous functions and promises
+- Await can only be used on a function returning a promise. An async function returns a promise. a Promise is an object that will produce a single value some time in the future. If the promise is successful, it will produce a resolved value, but if something goes wrong then it will produce a reason why the promise failed.
 
 #### Defer
+- Defer allows you to defer values returned from loaders by passing promises instead of resolved values. It is imported from react router DOM. In this project we the function which fetches our data inside of a loader function.
 
-#### Await
+#### Await 
+- Await is also imported from React Router DOM and it is used to render values that have been handled. It is usually rendered inside of a suspense component.  
 
 
 #### Suspense
+- Suspense is a component imported from React. Suspense lets you display a fallback until the data or children are done loading. The fallback is usually a form of loading state which could be a page, plain text, animation etc, just to inform the user that the data is loading.
 
 #### Firestore from Firebase
-
-#### Render Props
-
-## Client side routing
+- Firestore from firebase provides you with a remote server where you can create a database and make requests to fetch data from. We stopped fetching our data from our server mimick (mirage.js) and moved them to firebase. data care retrieved as specified in the documentation. Some functions such as collection, getDocs, getFireStore, query(which was used to query the dataset to return the results that matches specified parameters) and getDoc were used.
 
 
 
@@ -132,10 +111,27 @@ We are building a mock single page app for the purpose of practicing the usage o
 - https://reactrouter.com/en/main/components/nav-link
 - https://www.youtube.com/watch?v=nDGA3km5He4
 - https://reactrouter.com/en/main/hooks/use-search-params
+- [Create Browser router](https://reactrouter.com/en/main/routers/create-browser-router)
+- [Data Library integration](https://reactrouter.com/en/main/guides/data-libs)
+- https://reactrouter.com/en/main/components/navigate
+- https://reactrouter.com/en/main/utils/defer
+- https://reactrouter.com/en/main/hooks/use-action-data
+- https://reactrouter.com/en/main/components/await
+- [Suspense component](https://react.dev/reference/react/Suspense)
+- [Deferred data Guide](https://reactrouter.com/en/main/guides/deferred)
+- [Suspense Guide](https://reactrouter.com/en/main/guides/suspense)
+- [Firebase Link](https://firebase.google.com/)
+- [How to use cloud firestore in React](https://www.freecodecamp.org/news/how-to-use-the-firebase-database-in-react/)
+- [Youtube video Tutorial By Bob Ziroll](https://www.youtube.com/watch?v=nDGA3km5He4)
 
 #### Additional
 - The data used in this project were initially fetched from an Api running locally. This API is a mimick of a server created using Miragejs. At the later stages, the data were migtrated to firestore from firebase
 
 
+
 ## Activelink
 - [vanlife site](https://vanlifetogo.netlify.app/)
+
+## Acknowledgement
+- [Bob Ziroll's Youtube Video tutorial](https://www.youtube.com/watch?v=nDGA3km5He4)
+- [FreeCodeCamp.org](FreeCodeCamp.org)
