@@ -21,7 +21,7 @@ const HostVansDetail = () => {
         fontWeight: 'bold'
     }
 
-    function renderHostVanDetails(data) {
+    const renderHostVanDetails = (data) => {
 
 
         const HostVanDetailsEl = <>

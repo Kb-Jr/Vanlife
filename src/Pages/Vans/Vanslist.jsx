@@ -4,7 +4,7 @@ import '../../server'
 import { Link, useSearchParams, useLoaderData, defer, Await } from 'react-router-dom'
 import { getVans } from '../../../api'
 
-export function loader() {
+export const loader = () => {
     const vansPromise = getVans()
     return defer({ vans: vansPromise })
 
@@ -32,7 +32,7 @@ const Vanslist = () => {
     }
 
 
-    function renderVanEls(vans) {
+    const renderVanEls = (vans) => {
         const displayedVans = typeFilter ? vans.filter(van => van.type.toLowerCase() === typeFilter) : vans;
         const vanslistEls =
             <>

@@ -12,7 +12,7 @@ export async function loader({ request }) {
 const HostVans = () => {
     const dataPromise = useLoaderData();
 
-    function renderHostVan(data) {
+    const renderHostVan = (data) => {
 
         const hostvans = data
         const hostvansEls =

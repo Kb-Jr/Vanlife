@@ -5,7 +5,7 @@ import { BiArrowBack } from 'react-icons/bi'
 import '../../server'
 import { getVan } from '../../../api';
 
-export function loader({ params }) {
+export const loader = ({ params }) => {
     return defer({ data: getVan(params.id) })
 }
 
