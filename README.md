@@ -5,6 +5,8 @@ We are building a mock single page app for the purpose of practicing the usage o
 
 ## Table Of Contents ##################
 - [Setting up](#Setting-up)
+- [Absolute and Relative Routes](#absolute-and-relative-routes)
+
 
 ### Topics
 #### Setting up
