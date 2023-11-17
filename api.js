@@ -5,6 +5,7 @@ import { collection, doc, getDocs, getFirestore, getDoc, query, where} from "fir
 
 //web app's Firebase configuration
 const firebaseConfig = {
+    //  This is mostly a read only application, so displaying the API key shouldnt constitute much of a threat 
   apiKey: "AIzaSyCMTzO2tUiOokmibxpYsHGKaSgxpfLWxRc",
   authDomain: "vanlifex.firebaseapp.com",
   projectId: "vanlifex",
